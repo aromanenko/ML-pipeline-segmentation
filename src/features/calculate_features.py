@@ -8,7 +8,6 @@ from tqdm import tqdm
 tqdm.pandas()
 import os
 import sys
-import numpy as np
 
 # project_path = os.path.abspath(os.path.join('..'))
 
@@ -157,7 +156,7 @@ def generate_lagged_features(
 
 
 if __name__ == '__main__':
-    stores = [317]
+    stores = [533, 535, 540, 555, 557, 562, 637, 644]
 
     for store in tqdm(stores):
         data = pd.read_csv(f'DataShopsNoLagsAll/{store}.csv')
@@ -175,7 +174,7 @@ if __name__ == '__main__':
                             , id_cols = id_cols
                             , date_col = date_col
                             , lags = [4, 8, 26, 52] ## weeks
-                            , windows = ['112D', '224D', '728D', '1456D'] ## days
+                            , windows = ['28D', '56D', '182D', '364D'] ## days
                             , preagg_methods = ['mean'] # ['mean', 'count']
                             , agg_methods = ['mean', 'median']
                             , dynamic_filters = ['PROMO1_FLAG', 'PROMO2_FLAG', 'PROMO12_FLAG', 'NO_FILTER']
